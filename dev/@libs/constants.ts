@@ -6,3 +6,4 @@ export const APP_DESCRIPTION =
 export const TOP_EXIT_ZONE_PX = 5;
 /** Pointer must move below this Y before entering fullscreen again (avoids flicker). */
 export const TOP_ENTER_ZONE_PX = 28;
+export const EXTENSION_INIT_FLAG = "__fullscreen-focus";

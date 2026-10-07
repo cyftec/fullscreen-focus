@@ -1,10 +1,13 @@
-import { TOP_ENTER_ZONE_PX, TOP_EXIT_ZONE_PX } from "./@libs/constants";
+import {
+  EXTENSION_INIT_FLAG,
+  TOP_ENTER_ZONE_PX,
+  TOP_EXIT_ZONE_PX,
+} from "./@libs/constants";
 
-const INIT_FLAG = "__machromeFS";
-const win = window as Window & { [INIT_FLAG]?: boolean };
+const win = window as Window & { [EXTENSION_INIT_FLAG]?: boolean };
 
-if (!win[INIT_FLAG]) {
-  win[INIT_FLAG] = true;
+if (!win[EXTENSION_INIT_FLAG]) {
+  win[EXTENSION_INIT_FLAG] = true;
 
   let wantFullscreen: boolean | null = null;
 

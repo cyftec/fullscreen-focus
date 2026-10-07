@@ -51,7 +51,7 @@ export const karma: Karma = {
     },
   },
   maya: {
-    name: "sample-app",
+    name: "fullscreen-focus",
     appType: "ext",
     dependencies: { "@cyftec/maya": "0.2.5", "@types/chrome": "0.0.297" },
     devDependencies: {
@@ -70,9 +70,9 @@ export const karma: Karma = {
         [files.disposable.bunLockBFile]: true,
         [files.disposable.dotVscodeDir]: true,
         [files.disposable.dotZedDir]: true,
-        [files.disposable.nodeModulesDir]: false,
+        [files.disposable.nodeModulesDir]: true,
         [files.disposable.packageJsonFile]: true,
-        [files.disposable.tsConfigFile]: false,
+        [files.disposable.tsConfigFile]: true,
       },
     },
   },
@@ -138,10 +138,7 @@ export const karma: Karma = {
       noUncheckedSideEffectImports: true,
       noUnusedLocals: true,
       noUnusedParameters: true,
-      types: [
-        "bun-types",
-        "chrome"
-      ],
+      types: ["bun-types", "chrome"],
     },
     include: ["_karma/**/*.ts", "dev/**/*.ts"],
   },
