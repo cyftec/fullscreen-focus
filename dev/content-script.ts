@@ -6,12 +6,18 @@ import {
 
 const win = window as Window & { [EXTENSION_INIT_FLAG]?: boolean };
 
+const isAltKey = (event: KeyboardEvent) =>
+  event.key === "Alt" ||
+  event.code === "AltLeft" ||
+  event.code === "AltRight";
+
 if (!win[EXTENSION_INIT_FLAG]) {
   win[EXTENSION_INIT_FLAG] = true;
 
   let wantFullscreen: boolean | null = null;
+  let lastClientY = 0;
 
-  const applyPointerY = (clientY: number) => {
+  const applyPointerY = (clientY: number, blockEnterFullscreen: boolean) => {
     let next = wantFullscreen;
     if (next === null) {
       next = clientY > TOP_EXIT_ZONE_PX;
@@ -23,6 +29,8 @@ if (!win[EXTENSION_INIT_FLAG]) {
       return;
     }
 
+    if (blockEnterFullscreen && next) return;
+
     if (next === wantFullscreen) return;
     wantFullscreen = next;
     chrome.runtime.sendMessage({ wantFullscreen: next }).catch(() => {});
@@ -31,8 +39,18 @@ if (!win[EXTENSION_INIT_FLAG]) {
   window.addEventListener(
     "pointermove",
     (event) => {
-      applyPointerY(event.clientY);
+      lastClientY = event.clientY;
+      applyPointerY(event.clientY, event.altKey);
     },
     { capture: true, passive: true },
+  );
+
+  window.addEventListener(
+    "keyup",
+    (event) => {
+      if (!isAltKey(event)) return;
+      applyPointerY(lastClientY, false);
+    },
+    { capture: true },
   );
 }
