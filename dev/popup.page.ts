@@ -22,16 +22,24 @@ export default m.Html({
       children: [
         m.Script({ src: "popup.main.js", defer: true }),
         m.Div({
-          style:
-            "font-family: system-ui, sans-serif; padding: 1rem; max-width: 28rem; line-height: 1.5",
+          class: "pa3 w5 dark-gray f5",
           children: [
-            m.H1("Hold Alt to prevent fullscreen"),
+            m.H1({
+              class: "ma0",
+              children: "Press & hold 'Alt' key to stop fullscreen",
+            }),
             m.P(
-              "While you hold the Alt key, moving the pointer will not enter fullscreen from normal window mode. This applies across tabs in the same window.",
+              "Pressing & holding the 'Alt' key prevents the page, going from normal to fullscreen mode.",
             ),
             m.P(
-              "Leaving fullscreen still works as usual: move the pointer to the top edge of the page.",
+              "Leaving fullscreen still works as usual: move the pointer to the top of the page.",
             ),
+            m.H5({ class: "ma0 gray", children: "Disclaimer" }),
+            m.P({
+              class: "ma0 f6 gray",
+              children:
+                "Some sites specifically prevent the fullscreen behavior. So this extension might not work the same on every page.",
+            }),
           ],
         }),
       ],

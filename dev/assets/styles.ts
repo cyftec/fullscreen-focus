@@ -22,8 +22,7 @@ export const mediaConstraintsOverrides = {
 
 export const atomicClassOverrides = {
   default: {
-    theme: "{ color: #ee4440 }",
-    "bg-theme": "{ background-color: #ee4440 }",
+    w6: "{ width: 32rem }",
   },
 } as const satisfies AtomicClassOverrides;
 
@@ -33,7 +32,7 @@ type AppAtomicClassName = AppAtomicClassNames<
 >;
 
 export const compoundClasses = defineCompoundClasses<AppAtomicClassName>()({
-  card: "bg-theme pa2 b--light-silver br4",
+  used: "ma0 pa3 w5 dark-gray gray f5 f6",
 });
 
 export type { ClassNamesPhrase };
