@@ -8,8 +8,6 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: APP_NAME,
   version: "0.0.1",
   description: APP_DESCRIPTION,
-  permissions: ["tabs"],
-  host_permissions: [HOST_URL_IDENTIFIER],
   background: {
     service_worker: "sw.js",
   },
@@ -17,19 +15,22 @@ const manifest: chrome.runtime.ManifestV3 = {
     {
       matches: [HOST_URL_IDENTIFIER],
       js: ["content-script.js"],
+      run_at: "document_start",
+      all_frames: true,
+      match_about_blank: true,
     },
   ],
-  web_accessible_resources: [
-    {
-      resources: ["assets/images/logo.png"],
-      matches: [HOST_URL_IDENTIFIER],
-    },
-  ],
+  icons: {
+    "16": "assets/images/icon-16.png",
+    "32": "assets/images/icon-32.png",
+    "48": "assets/images/icon-48.png",
+    "128": "assets/images/icon-128.png",
+  },
   action: {
     default_icon: {
-      "16": "assets/images/logo.png",
-      "24": "assets/images/logo.png",
-      "32": "assets/images/logo.png",
+      "16": "assets/images/icon-16.png",
+      "24": "assets/images/icon-24.png",
+      "32": "assets/images/icon-32.png",
     },
     default_title: APP_NAME,
     default_popup: "popup.html",

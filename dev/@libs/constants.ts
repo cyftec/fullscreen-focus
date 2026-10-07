@@ -1,18 +1,8 @@
-export const HOST_URL_IDENTIFIER = "https://*.youtube.com/*";
-export const APP_NAME = "YouTube Video Attention Score";
+export const HOST_URL_IDENTIFIER = "<all_urls>";
+export const APP_NAME = "Focus";
 export const APP_DESCRIPTION =
-  "An attention score presenter for a YouTube video.";
-
-export const UI_ELEM_ID = "attention-score";
-export const SELECTOR = {
-  VIEWS_ELEM: "#ytd-watch-info-text #tooltip",
-  LIKES_ELEM: "like-button-view-model button",
-  CONTAINER_ELEM: "#above-the-fold #title",
-};
-export const ATTENTION = {
-  OKAY: "😑",
-  GOOD: "🙂",
-  AWESOME: "😃",
-  FABULOUS: "🤩",
-  UNEXPECTED: "😲",
-};
+  "Fullscreen on document hover; exit when the pointer moves to the top of the page.";
+/** Pointer in this band from the top exits fullscreen. */
+export const TOP_EXIT_ZONE_PX = 5;
+/** Pointer must move below this Y before entering fullscreen again (avoids flicker). */
+export const TOP_ENTER_ZONE_PX = 28;
